@@ -34,7 +34,8 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 
 #gem 'hrpicot'
 #gem 'premailer-rails3'
-gem 'roadie'
+#gem 'roadie'
+gem 'roadie-rails'
 
 
 group :production do
