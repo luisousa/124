@@ -22,4 +22,18 @@
 			<% end %>
 	  </div>
 	</div>
+	<div class="row">
+		<div class="col-md-6">
+				<h1>OLX carros até 2500</h1>
+				<% if @list_result_cars_olx %>
+				  <ul>
+				    <% @list_result_cars_olx.each do |res1| %>
+				      <li><%= res1 %></li>
+				    <% end %>
+				  </ul>
+				<% end %>
+			</div>
+	</div>
+
 </div>
+

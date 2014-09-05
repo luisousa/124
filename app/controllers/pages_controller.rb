@@ -20,5 +20,14 @@ class PagesController < ApplicationController
 		  	@list_result_cj << item.at_css(".li_desc a").text+item.at_css(".li_price").text
 			end
 
+
+		@list_result_cars_olx = []
+		#for i in 1..2
+			#url = "http://www.olx.pt/nf/search/fiat+124/-p-#{i}"
+			url = "http://www.olx.pt/nf/carros-cat-378/price_to,2500,year_to,1992"
+			doc = Nokogiri::HTML(open(url))
+			doc.css(".results").each do |item|
+		  	@list_result_cars_olx << item.at_css(".ti").text+item.at_css(".date").text
+			end
   end
 end
