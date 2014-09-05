@@ -1,0 +1,25 @@
+
+<div class="container">
+	<div class="row">
+	  <div class="col-md-6">
+			<h1>OLX</h1>
+			<% if @list_result %>
+			  <ul>
+			    <% @list_result.each do |res| %>
+			      <li><%= res %></li>
+			    <% end %>
+			  </ul>
+			<% end %>
+		</div>
+	  <div class="col-md-6">
+	  	<h1>Custo Justo</h1>
+	  		<% if @list_result_cj %>
+			  <ul>
+			    <% @list_result_cj.each do |res| %>
+			      <li><%= res %></li>
+			    <% end %>
+			  </ul>
+			<% end %>
+	  </div>
+	</div>
+</div>
