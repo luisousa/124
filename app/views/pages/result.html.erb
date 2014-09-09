@@ -6,12 +6,27 @@
 			<% if @list_result %>
 			  <ul>
 			    <% @list_result.each do |res| %>
-			      <li><%= res %></li>
+			      <li>
+			      		<%= res.titulo %>
+			      	-
+			      		<a href="<%= res.descricao %>" target="_blank">link</a>
+			      		<!-- <img onmouseover="bigImg(this)"  border="0" src="<%= res.image %>" alt="Smiley" width="32" height="32"> -->
+						<a href="<%= res.image %>"
+  						onmouseover="document.getElementById('place-holder-1').src='<%= res.image %>';"
+  						onmouseout="document.getElementById('place-holder-1').src='/theme/img/linkpeek-transparent-pixel-placeholder.png';">
+  						
+  						<img src="/theme/img/linkpeek-transparent-pixel-placeholder.png" id="place-holder-1" style="zindex: 100; position: absolute;" />
+						</a>
+
+
+
+
+			      </li>
 			    <% end %>
 			  </ul>
 			<% end %>
 		</div>
-	  <div class="col-md-6">
+	<!--  <div class="col-md-6">
 	  	<h1>Custo Justo</h1>
 	  		<% if @list_result_cj %>
 			  <ul>
@@ -32,7 +47,7 @@
 				    <% end %>
 				  </ul>
 				<% end %>
-			</div>
+			</div>  -->
 	</div>
 
 </div>
