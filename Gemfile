@@ -36,7 +36,7 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 #gem 'premailer-rails3'
 #gem 'roadie'
 gem 'roadie-rails'
-
+gem 'devise'
 
 
 group :production do
