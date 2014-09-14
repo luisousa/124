@@ -3,52 +3,89 @@
 	<div class="row">
 	  <div class="col-md-6">
 			<h1>OLX</h1>
+			
+
+
 			<% if @list_result %>
 			  <ul>
+			  	<% i=0 %>
 			    <% @list_result.each do |res| %>
 			      <li>
-			      		<%= res.titulo %>
-			      	-
-			      		<a href="<%= res.descricao %>" target="_blank">link</a>
+
 			      		<!-- <img onmouseover="bigImg(this)"  border="0" src="<%= res.image %>" alt="Smiley" width="32" height="32"> -->
-						<a href="<%= res.image %>"
-  						onmouseover="document.getElementById('place-holder-1').src='<%= res.image %>';"
-  						onmouseout="document.getElementById('place-holder-1').src='/theme/img/linkpeek-transparent-pixel-placeholder.png';">
-  						
-  						<img src="/theme/img/linkpeek-transparent-pixel-placeholder.png" id="place-holder-1" style="zindex: 100; position: absolute;" />
+						<a href="<%= res.descricao %>" target="_blank"
+  						onmouseover="document.getElementById('place-holder-<%= i %>').src='<%= res.image %>';"
+  						onmouseout="document.getElementById('place-holder-<%= i %>').src='https://db.tt/y12wpr6O';">
+  						<%= res.titulo %>
+  						<img src="https://db.tt/y12wpr6O" id="place-holder-<%= i %>" style="zindex: 100; position: absolute;"/>
 						</a>
 
-
-
-
+						<%= res.preco %> -
+						<%= res.data %>
+					<%	i += 1 %>
 			      </li>
 			    <% end %>
 			  </ul>
+			  <% else %>
+			      	<p>Pesquisa sem resultados</p>
 			<% end %>
-		</div>
-	<!--  <div class="col-md-6">
-	  	<h1>Custo Justo</h1>
+			
+			</div>
+			<div class="col-md-6">
+	  		<h1>Custo Justo</h1>
 	  		<% if @list_result_cj %>
 			  <ul>
+			  	<% i=0 %>
 			    <% @list_result_cj.each do |res| %>
-			      <li><%= res %></li>
+			      <li>
+
+			      	<a href="<%= res.descricao %>" target="_blank"
+  						onmouseover="document.getElementById('place-holder2-<%= i %>').src='<%= res.image %>';"
+  						onmouseout="document.getElementById('place-holder2-<%= i %>').src='https://db.tt/y12wpr6O';">
+  						<%= res.titulo %>
+  						<img src="https://db.tt/y12wpr6O" id="place-holder2-<%= i %>" style="zindex: 100; position: absolute;"/>
+						</a>
+
+						<%= res.preco %> -
+						<%= res.data %>
+
+					<%	i += 1 %>
+			  	</li>
 			    <% end %>
 			  </ul>
 			<% end %>
-	  </div>
+	  		</div>
 	</div>
 	<div class="row">
 		<div class="col-md-6">
 				<h1>OLX carros até 2500</h1>
-				<% if @list_result_cars_olx %>
-				  <ul>
-				    <% @list_result_cars_olx.each do |res1| %>
-				      <li><%= res1 %></li>
-				    <% end %>
-				  </ul>
-				<% end %>
-			</div>  -->
-	</div>
+			
+			<% if @list_result_cars_olx %>
+			  <ul>
+			  	<% i=0 %>
+			    <% @list_result_cars_olx.each do |res| %>
+			      <li>
 
+			      		<!-- <img onmouseover="bigImg(this)"  border="0" src="<%= res.image %>" alt="Smiley" width="32" height="32"> -->
+						<a href="<%= res.descricao %>" target="_blank"
+  						onmouseover="document.getElementById('place-holder3-<%= i %>').src='<%= res.image %>';"
+  						onmouseout="document.getElementById('place-holder3-<%= i %>').src='https://db.tt/y12wpr6O';">
+  						<%= res.titulo %>
+  						<img src="https://db.tt/y12wpr6O" id="place-holder3-<%= i %>" style="zindex: 100; position: absolute;"/>
+						</a>
+
+						<%= res.preco %> -
+						<%= res.data %>
+					<%	i += 1 %>
+			      </li>
+			    <% end %>
+			  </ul>
+			  <% else %>
+			      	<p>Pesquisa sem resultados</p>
+			<% end %>
+			
+		</div>
+	</div>
+	
 </div>
 
