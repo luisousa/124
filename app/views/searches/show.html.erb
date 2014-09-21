@@ -1,0 +1,28 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+<div class="container">
+	<div class="row">
+	  <div class="col-md-6">
+	  	 <!-- CODE HERE -->
+	  	 <h3><%= @search.site %>
+	  	 <p> <%= @search.title %></p>
+		 <p><%= @search.description %></p>
+		<div class="center">
+    	 	<%= @search.url %>
+    	</div>	
+
+	  	 </div>
+	</div>
+</div>
+
+<!--
+<div class="row">
+  <div class="col-md-6">
+	  	 ...
+  	 </div>
+	</div>
+</div>
+-->
+
+<%= link_to 'Edit', edit_search_path(@search) %> |
+<%= link_to 'Back', searches_path %>

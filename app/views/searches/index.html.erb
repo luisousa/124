@@ -1,0 +1,57 @@
+<h1>Pesquisas de anúncios guardados</h1>
+
+<div class="center">
+  <div class="row">
+    <% j=0 %>
+
+    <% @searches.each do |search| %>
+      <div class="col-md-6">
+     
+          <%= search.site %>
+          <div class="caption">
+            <h3><%= search.title %></h3>
+            <p><strong><%= search.description %></strong></p>
+           <!-- <p><%= search.url %></p> -->
+            <% 
+            @list = say_hello(search.url)
+            %>
+            <ul class="list-unstyled">
+           <% i=0 %>
+            <% @list.each do |res| %>
+            <li>
+              <!-- <img onmouseover="bigImg(this)"  border="0" src="<%= res.image %>" alt="Smiley" width="32" height="32"> -->
+              <a class="btn-link" href="<%= res.descricao %>" target="_blank"
+                onmouseover="document.getElementById('place-holder<%= j %>-<%= i %>').src='<%= res.image %>';"
+                onmouseout="document.getElementById('place-holder<%= j %>-<%= i %>').src='https://db.tt/y12wpr6O';">
+                <%= res.titulo %>
+                <img src="https://db.tt/y12wpr6O" id="place-holder<%= j %>-<%= i %>" style="zindex: 100; position: absolute;"/>
+              </a>
+
+              <%= res.preco %> -
+              <%= res.data %>
+              <%  i += 1 %>
+              <%  j += 1 %>
+            </li>
+          <% end %>
+        </ul>
+
+
+        </div>
+
+        <%= link_to 'Show', search %></td>
+        <%= link_to 'Edit', edit_search_path(search) %>
+        <%= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+      </div>
+      
+    <% end %>
+    <br>
+      <br>
+      <br>
+      <br>
+  </div>
+</div>
+<br>
+
+
+<%= link_to 'New Search', new_search_path %>

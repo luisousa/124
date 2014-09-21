@@ -1,4 +1,6 @@
 Scrap::Application.routes.draw do
+  resources :searches
+
   devise_for :users
   get "pages/result"
   
