@@ -46,6 +46,8 @@ class PagesController < ApplicationController
 
 		@list_result_cj = []
 			url = "http://www.custojusto.pt/portugal/carros-usados/q/fiat+124"
+		
+		if url.include? "custojusto.pt/"
 			doc = Nokogiri::HTML(open(url))
 			doc.css(".lista").each do |item|
 	
@@ -60,7 +62,7 @@ class PagesController < ApplicationController
 			@list_result_cj << @anuncio2 
 
 			end
-
+		end
 
 		@list_result_cars_olx = []
 	#	#for i in 1..2
