@@ -135,12 +135,24 @@ def say_hello(url)
       @list_result << @anuncio2 
 
 
+
       end
     end
 
 
+    if (@list_result != nil) then
+          @list_result
+    else
+      params[:anuncio] = {:titulo => "Sem titulo",:descricao => "Sem Desc",:preco => "Sem preco",:data => "Sem data",:image => "https://db.tt/6mP7KWfn" } 
+      @anuncio3=Anuncio.new(params[:anuncio])
+
+
+      @list_result << @anuncio3
+      @list_result
+    end
+
+
     
-    @list_result
 end 
 
 
