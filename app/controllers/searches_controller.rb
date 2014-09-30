@@ -98,7 +98,7 @@ def say_hello(url)
         #CRIAR IMAGEM A DIZER SEM FOTO!!!!
 
         if(item.at_css(".pic img").nil?)
-          imagem = "https://db.tt/6mP7KWfn";
+          imagem = "https://db.tt/6mP7KWfn"
         else
           imagem = item.at_css(".pic img")[:src] 
         end
@@ -118,16 +118,24 @@ def say_hello(url)
 
   #CODE CUSTO JUSTO
 
+
     if url.include? "custojusto.pt/"
  
       #url = "http://www.custojusto.pt/portugal/carros-usados/q/fiat+124"
 
+
+
       doc = Nokogiri::HTML(open(url))
       doc.css(".lista").each do |item|
 
-      params[:anuncio] = {:titulo => item.at_css(".li_desc a").text[0..40],:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => item.at_css(".li_date").next_element.text,:image => item.at_css(".li_image img")[:src] } 
-      
+      if(item.at_css(".li_image img").nil?)
+                imagem = "https://db.tt/6mP7KWfn";
+        else
+                imagem = item.at_css(".li_image_bg img")[:src] 
+      end
 
+
+      params[:anuncio] = {:titulo => item.at_css(".li_desc a").text[0..40],:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => item.at_css(".li_date").next_element.text,:image =>  imagem} 
 
       @anuncio2=Anuncio.new(params[:anuncio])
 
@@ -137,21 +145,25 @@ def say_hello(url)
 
 
       end
+
     end
 
 
-    if (@list_result != nil) then
-          @list_result
-    else
+    if   @list_result.blank? == false
       params[:anuncio] = {:titulo => "Sem titulo",:descricao => "Sem Desc",:preco => "Sem preco",:data => "Sem data",:image => "https://db.tt/6mP7KWfn" } 
+
       @anuncio3=Anuncio.new(params[:anuncio])
 
-
       @list_result << @anuncio3
+      @list_result << @anuncio3
+
       @list_result
+      
+      
+    else
+       @list_result
+       
     end
-
-
     
 end 
 

@@ -15,11 +15,11 @@
             %>
             <ul class="list-unstyled">
 
-           <% if @list %>   
+           <% if !@list.nil?  %>   
            <% i=0 %>
             <% @list.each do |res| %>
             <li>
-              <!-- <img onmouseover="bigImg(this)"  border="0" src="<%= res.image %>" alt="Smiley" width="32" height="32"> -->
+              
               <a class="btn-link" href="<%= res.descricao %>" target="_blank"
                 onmouseover="document.getElementById('place-holder<%= j %>-<%= i %>').src='<%= res.image %>';"
                 onmouseout="document.getElementById('place-holder<%= j %>-<%= i %>').src='https://db.tt/y12wpr6O';">
