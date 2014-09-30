@@ -2,9 +2,14 @@
   <div class="row">
     <% j=0 %>
 
+     
+      Ultima actualização: <%= Time.now.in_time_zone("Portugal") %>
+      <br>
+
+
     <% @searches.each do |search| %>
       <div class="col-md-6">
-     
+                  
          <!-- <%= search.site %> -->
           <div class="caption">
             <h3><%= search.title %></h3>
