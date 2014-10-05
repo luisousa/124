@@ -2,10 +2,17 @@ class SearchesController < ApplicationController
   before_action :set_search, only: [:show, :edit, :update, :destroy]
   helper_method :say_hello
 
+
+  before_filter :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy,:show]
+  before_filter :check_user, only: [:edit, :update, :destroy,:show]
+
+
+
   # GET /searches
   # GET /searches.json
   def index
-    @searches = Search.all
+    #@searches = Search.all
+    @searches = Search.where(user: current_user)
   end
 
   # GET /searches/1
@@ -26,8 +33,7 @@ class SearchesController < ApplicationController
   # POST /searches.json
   def create
     @search = Search.new(search_params)
-
-   
+    @search.user_id = current_user.id
 
     respond_to do |format|
       if @search.save
@@ -149,12 +155,11 @@ def say_hello(url)
     end
 
 
-    if   @list_result.blank? == false
+    if   @list_result.blank? == true
       params[:anuncio] = {:titulo => "Sem titulo",:descricao => "Sem Desc",:preco => "Sem preco",:data => "Sem data",:image => "https://db.tt/6mP7KWfn" } 
 
       @anuncio3=Anuncio.new(params[:anuncio])
 
-      @list_result << @anuncio3
       @list_result << @anuncio3
 
       @list_result
@@ -166,6 +171,13 @@ def say_hello(url)
     end
     
 end 
+
+
+def check_user
+      if current_user != @search.user
+        redirect_to root_url, alert: "Sorry, this search belongs to someone else"
+      end
+end
 
 
   private

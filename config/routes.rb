@@ -5,7 +5,7 @@ Scrap::Application.routes.draw do
   get "pages/result"
   
 
-root 'pages#result'
+root 'searches#index'
 
 
 
