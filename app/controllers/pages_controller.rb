@@ -7,73 +7,75 @@ class PagesController < ApplicationController
 		#for i in 1..2
 			#url = "http://www.olx.pt/nf/search/fiat+124/-p-#{i}"
 			
-		#						url = "http://www.olx.pt/nf/carros-cat-378/fiat+124"
+								url = "http://www.olx.pt/nf/carros-cat-378/fiat+124"
 								#url = "http://www.olx.pt/nf/carros-cat-378/BMW+318i"
 								#url = "http://www.olx.pt/nf/carros-cat-378"
 								
 								#PARA OLX ACRECENTAR nf
 
 
-		#						doc = Nokogiri::HTML(open(url))
-		#						@doc1  = doc
-		#						doc.css(".results").each do |item|
+								doc = Nokogiri::HTML(open(url))
+								@doc1  = doc
+								doc.css(".results").each do |item|
 
-							
+									title = doc.at_css('div#listingTitle').text
+
 									#REVER
 									#tech_ids = params[:technols][:id].reject(&:blank?) unless params[:technols].nil?
 
 									#TODO
 									#CRIAR IMAGEM A DIZER SEM FOTO!!!!
 
-		#							if(item.at_css(".pic img").nil?)
-		#								imagem = "https://db.tt/6mP7KWfn";
-		#							else
-		#								imagem = item.at_css(".pic img")[:src] 
-		#							end
+									if(item.at_css(".pic img").nil?)
+										imagem = "https://db.tt/6mP7KWfn";
+									else
+										imagem = item.at_css(".pic img")[:src] 
+									end
 
 								
 
-		#						params[:anuncio] = {:titulo => item.at_css(".ti a")[:title],:descricao => item.at_css(".ti a")[:href],:image => imagem,:preco => item.at_css(".price").text,:data => item.at_css(".date").text} 
+								params[:anuncio] = {:titulo => item.at_css(".ti a")[:title],:descricao => item.at_css(".ti a")[:href],:image => imagem,:preco => item.at_css(".price").text,:data => item.at_css(".date").text,:link => title} 
 
-		#						@anuncio1=Anuncio.new(params[:anuncio])
+								@anuncio1=Anuncio.new(params[:anuncio])
 								
 								
 						#		@list_result << item.at_css(".ti").text+item.at_css(".ti a")[:href]+" - "+item.at_css(".pic img")[:src]
 
-		#					  @list_result << @anuncio1
-		#						end
+							  @list_result << @anuncio1
+								end
 									#	end
 
-						@list_result_cj = []
-						#url = "http://www.custojusto.pt/portugal/carros-usados/q/fiat+124"
-						url = "http://www.custojusto.pt/portugal/q/emprego"
+	#					@list_result_cj = []
+	#					#url = "http://www.custojusto.pt/portugal/carros-usados/q/fiat+124"
+	#					url = "http://www.custojusto.pt/portugal/quartos"
 
 
-						if url.include? "custojusto.pt/"
-							doc = Nokogiri::HTML(open(url))
+	#					if url.include? "custojusto.pt/"
+	#						doc = Nokogiri::HTML(open(url))
+
+							
+	#						title = doc.at_css('div#content_header h1').text									
 				
-							doc.css(".lista").each do |item|
-					
+	#						doc.css(".lista").each do |item|
+												
 							
-							
-							if(item.at_css(".li_image img").nil?)
-								imagem = "https://db.tt/6mP7KWfn";
-							else
-								imagem = item.at_css(".li_image img")[:src] 
-							end
+	#						if(item.at_css(".li_image img").nil?)
+	#							imagem = "https://db.tt/6mP7KWfn";
+	#						else
+	#							imagem = item.at_css(".li_image img")[:src] 
+	#						end
 
-
-
-
-	params[:anuncio] = {:titulo => item.at_css(".li_desc a").text,:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => item.at_css(".li_date").next_element.text,:image => imagem } 
-
-							@anuncio2=Anuncio.new(params[:anuncio])
+	#params[:anuncio] = {:titulo => item.at_css(".li_desc a").text,:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => title,:image => imagem } 
+	#params[:anuncio] = {:titulo => item.at_css(".li_desc a").text,:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => item.at_css(".li_date").next_element.text,:image => imagem} 
+#	params[:anuncio] = {:titulo => item.at_css(".li_desc a").text,:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => item.at_css(".li_date").next_element.text,:image => imagem,:link => title} 
+	
+#							@anuncio2=Anuncio.new(params[:anuncio])
 
 						#  	@list_result_cj << item.at_css(".li_desc a").text+item.at_css(".li_price").text
-							@list_result_cj << @anuncio2 
+#							@list_result_cj << @anuncio2 
 
-				end
-			end
+#				end
+#			end
 
 	#							@list_result_cars_olx = []
 						#	#for i in 1..2

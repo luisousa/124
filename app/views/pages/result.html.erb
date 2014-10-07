@@ -4,12 +4,16 @@
 	  <div class="col-md-6">
 			<h1>OLX</h1>
 			
-
-
-			<% if @list_result %>
+		<% if @list_result %>
 			  <ul>
 			  	<% i=0 %>
 			    <% @list_result.each do |res| %>
+
+			    	<% if(i == 0)  %>
+			    		<h3><%= res.link %></h3>
+			    	<% end %>			
+			    	
+
 			      <li>
 
 			      		<!-- <img onmouseover="bigImg(this)"  border="0" src="<%= res.image %>" alt="Smiley" width="32" height="32"> -->
@@ -37,6 +41,10 @@
 			  <ul>
 			  	<% i=0 %>
 			    <% @list_result_cj.each do |res| %>
+			      <% if(i == 0)  %>
+			    		<h2><%= res.link %></h2>
+			    	<% end %>			
+
 			      <li>
 
 			      	<a href="<%= res.descricao %>" target="_blank"

@@ -9,11 +9,13 @@
 
     <% @searches.each do |search| %>
       <div class="col-xs-6">
-                  
+          
+
          <!-- <%= search.site %> -->
           <div class="caption">
-            <h3><%= search.title %></h3>
-            <p><strong><%= search.description %></strong></p>
+
+            <h4><%= search.title %></h4>
+            <strong><%= search.description %></strong>
            <!-- <p><%= search.url %></p> -->
             <% 
             @list = say_hello(search.url)
@@ -23,6 +25,12 @@
            <% if !@list.nil?  %>   
            <% i=0 %>
             <% @list.each do |res| %>
+
+            <% if(i == 0)  %>
+              <h4><%= res.link %></h4>
+            <% end %>     
+            
+
             <li>
               
               <a class="btn-link" href="<%= res.descricao %>" target="_blank"
@@ -48,6 +56,9 @@
         <%= link_to 'Edit', edit_search_path(search) %>
         <%= link_to 'Destroy', search, method: :delete, data: { confirm: 'Are you sure?' } %>
 
+        <br>
+        <br>
+        
       </div>
       
     <% end %>

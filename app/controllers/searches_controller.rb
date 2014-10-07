@@ -93,8 +93,13 @@ def say_hello(url)
          
     #PARA OLX ACRECENTAR nf
       doc = Nokogiri::HTML(open(url))
+
+      title = doc.at_css('div#listingTitle').text
+
+
       @doc1  = doc
       doc.css(".results").each do |item|
+
 
     
         #REVER
@@ -111,7 +116,7 @@ def say_hello(url)
 
       
 
-      params[:anuncio] = {:titulo => item.at_css(".ti a")[:title][0..40],:descricao => item.at_css(".ti a")[:href],:image => imagem,:preco => item.at_css(".price").text,:data => item.at_css(".date").text} 
+      params[:anuncio] = {:titulo => item.at_css(".ti a")[:title][0..40],:descricao => item.at_css(".ti a")[:href],:image => imagem,:preco => item.at_css(".price").text,:data => item.at_css(".date").text,:link => title} 
 
       @anuncio1=Anuncio.new(params[:anuncio])
 
@@ -129,19 +134,27 @@ def say_hello(url)
  
       #url = "http://www.custojusto.pt/portugal/carros-usados/q/fiat+124"
 
-
-
+    
       doc = Nokogiri::HTML(open(url))
+    
+      
+      title = doc.at_css('div#content_header h1').text
+      
+      if(title.nil?)
+         title = "Lista anuncios"
+       end
+
+
       doc.css(".lista").each do |item|
 
       if(item.at_css(".li_image img").nil?)
-                imagem = "https://db.tt/6mP7KWfn";
+                imagem = "https://db.tt/6mP7KWfn"
         else
                 imagem = item.at_css(".li_image_bg img")[:src] 
       end
 
 
-      params[:anuncio] = {:titulo => item.at_css(".li_desc a").text[0..40],:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => item.at_css(".li_date").next_element.text,:image =>  imagem} 
+      params[:anuncio] = {:titulo => item.at_css(".li_desc a").text[0..40],:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => item.at_css(".li_date").next_element.text,:image =>  imagem,:link => title,:link => title} 
 
       @anuncio2=Anuncio.new(params[:anuncio])
 
