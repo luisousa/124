@@ -14,8 +14,6 @@
          <!-- <%= search.site %> -->
           <div class="caption">
 
-            <h4><%= search.title %></h4>
-            <strong><%= search.description %></strong>
            <!-- <p><%= search.url %></p> -->
             <% 
             @list = say_hello(search.url)
@@ -27,6 +25,12 @@
             <% @list.each do |res| %>
 
             <% if(i == 0)  %>
+
+              <img src='<%= res.site_img %>' height="42" width="42">
+          
+              <h4><%= search.title %></h4>
+              <strong><%= search.description %></strong>
+          
               <h4><%= res.link %></h4>
             <% end %>     
             

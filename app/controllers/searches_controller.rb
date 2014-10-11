@@ -116,7 +116,7 @@ def say_hello(url)
 
       
 
-      params[:anuncio] = {:titulo => item.at_css(".ti a")[:title][0..40],:descricao => item.at_css(".ti a")[:href],:image => imagem,:preco => item.at_css(".price").text,:data => item.at_css(".date").text,:link => title} 
+      params[:anuncio] = {:titulo => item.at_css(".ti a")[:title][0..40],:descricao => item.at_css(".ti a")[:href],:image => imagem,:preco => item.at_css(".price").text,:data => item.at_css(".date").text,:link => title,:site_img => "https://db.tt/euZ3OV6H"} 
 
       @anuncio1=Anuncio.new(params[:anuncio])
 
@@ -144,7 +144,6 @@ def say_hello(url)
          title = "Lista anuncios"
        end
 
-
       doc.css(".lista").each do |item|
 
       if(item.at_css(".li_image img").nil?)
@@ -154,7 +153,7 @@ def say_hello(url)
       end
 
 
-      params[:anuncio] = {:titulo => item.at_css(".li_desc a").text[0..40],:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => item.at_css(".li_date").next_element.text,:image =>  imagem,:link => title,:link => title} 
+      params[:anuncio] = {:titulo => item.at_css(".li_desc a").text[0..40],:descricao => item.at_css(".li_desc a")[:href],:preco => item.at_css(".li_price").text,:data => item.at_css(".li_date").next_element.text,:image =>  imagem,:link => title,:link => title,:site_img => "https://db.tt/XaOVYCX9"} 
 
       @anuncio2=Anuncio.new(params[:anuncio])
 
