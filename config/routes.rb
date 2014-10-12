@@ -1,9 +1,16 @@
 Scrap::Application.routes.draw do
+  get "pages/control"
+  get "pages/about"
+  get "pages/contact"
+
+   get 'searches/list', to: 'searches#list'
   resources :searches
 
   devise_for :users
   get "pages/result"
-  
+
+
+ 
 
 root 'searches#index'
 

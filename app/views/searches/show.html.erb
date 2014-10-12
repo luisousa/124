@@ -1,20 +1,51 @@
 <!-- <p id="notice"><%= notice %></p> -->
 
-<div class="container">
-	<div class="row">
-	 
-	  	 <!-- CODE HERE -->
-	  	 <h3><%= @search.site %>
-	  	 <p> <%= @search.title %></p>
-		 <p><%= @search.description %></p>
-		<div class="center">
-    	 	<%= @search.url %>
-    	</div>	
+          <% j=0 %>
 
-	  	 </div>
-	
-</div>
+          <div class="caption">
 
+            <% 
+            @list = say_hello(@search.url)
+            %>
+            <ul class="list-unstyled">
+
+           <% if !@list.nil?  %>   
+           <% i=0 %>
+            <% @list.each do |res| %>
+
+            <% if(i == 0)  %>
+
+              <img src='<%= res.site_img %>' height="42" width="42">
+          
+              <h4><%= @search.title %></h4>
+              <strong><%= @search.description %></strong>
+          
+              <h4><%= res.link %></h4>
+            <% end %>     
+            
+
+            <li>
+              
+              <a class="btn-link" href="<%= res.descricao %>" target="_blank"
+                onmouseover="document.getElementById('place-holder<%= j %>-<%= i %>').src='<%= res.image %>';"
+                onmouseout="document.getElementById('place-holder<%= j %>-<%= i %>').src='https://db.tt/y12wpr6O';">
+                <%= res.titulo %>
+                <img src="https://db.tt/y12wpr6O" id="place-holder<%= j %>-<%= i %>" style="zindex: 100; position: absolute;"/>
+              </a>
+
+              <%= res.preco %> -
+              <%= res.data %>
+              <%  i += 1 %>
+              <%  j += 1 %>
+            </li>
+            <% end %>
+          <% end %>
+        </ul>
+
+        <%= link_to 'Edit', edit_search_path(@search) %> |
+		<%= link_to 'Back', searches_list_path %>
+
+        </div>
 <!--
 <div class="row">
   <div class="col-md-6">
@@ -24,5 +55,3 @@
 </div>
 -->
 
-<%= link_to 'Edit', edit_search_path(@search) %> |
-<%= link_to 'Back', searches_path %>

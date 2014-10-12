@@ -3,8 +3,8 @@ class SearchesController < ApplicationController
   helper_method :say_hello
 
 
-  before_filter :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy,:show]
-  before_filter :check_user, only: [:edit, :update, :destroy,:show]
+  before_filter :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy,:show,:list]
+  before_filter :check_user, only: [:edit, :update, :destroy,:show,:list]
 
 
 
@@ -13,6 +13,10 @@ class SearchesController < ApplicationController
   def index
     #@searches = Search.all
     @searches = Search.where(user: current_user)
+  end
+
+  def list
+      @searches = Search.where(user: current_user)
   end
 
   # GET /searches/1
