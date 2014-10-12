@@ -4,7 +4,7 @@ class SearchesController < ApplicationController
 
 
   before_filter :authenticate_user!, only: [:index, :new, :create, :edit, :update, :destroy,:show,:list]
-  before_filter :check_user, only: [:edit, :update, :destroy,:show,:list]
+  before_filter :check_user, only: [:edit, :update, :destroy,:show]
 
 
 
