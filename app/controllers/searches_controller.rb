@@ -39,8 +39,10 @@ class SearchesController < ApplicationController
     @search = Search.new(search_params)
     @search.user_id = current_user.id
 
+
     respond_to do |format|
       if @search.save
+        @search.priority = @search.id
         format.html { redirect_to @search, notice: 'Search was successfully created.' }
         format.json { render action: 'show', status: :created, location: @search }
 

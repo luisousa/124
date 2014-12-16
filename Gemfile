@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 ruby "1.9.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -37,6 +37,7 @@ gem 'bootstrap-sass', '~> 3.0.3.0'
 #gem 'roadie'
 gem 'roadie-rails'
 gem 'devise'
+gem 'delayed_job_active_record'
 
 
 group :production do
